@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="components/loader.css">
+    <script src="components/loader.js"></script>
+    <!--<script src="js/app.js"></script>
+    <script src="js/cssua.min.js"></script>-->
+    <script src="js/ncmb-latest.min.js"></script>
+ 	<script>
+    var appKey    = "5805ac8f06bca7f0177ae8c487349ee893c73b5a2bdc86541a28239d0fe5da5a";
+    var clientKey = "4ff73be5a2614b6b9b170383487d7a4b65e692bd8d3936ad7d6db113cf8a7d67";
+    var ncmb = new NCMB(appKey, clientKey);
+
+    function cntB() {
+        var ContentClass = ncmb.DataStore("Content");
+        var contentClass = new ContentClass();
+        var key   = "content";
+        var value = "testetstetestteste";//$("#reg_content").val();
+        contentClass.set(key, value);
+        contentClass.save()
+        .then(function() {
+            // 保存完了後に実行される
+            alert("New object created with objectId: " + contentClass.objectId);
+        })
+        .catch(function(error) {
+            // エラー時に実行される
+            alert("Failed to create new object, with error code: " + error.text);
+        });
+    }
+    
+    function startDemo() {
+            var TestClass = ncmb.DataStore("Car");
+            var testClass = new TestClass();
+            var key   = "price";
+            var value = "123";
+            testClass.set(key, value);
+            testClass.save()
+                .then(function() {
+                    // 保存完了後に実行される
+                    alert("New object created with objectId: " + testClass.objectId);
+                })
+                .catch(function(error) {
+                    // エラー時に実行される
+                    alert("Failed to create new object, with error code: " + error.text);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Backend Memo</h1>
+    Content:
+    <a data-role="button" data-inline="false" data-theme="b" onclick="startDemo()">Submit</a>
+</body>
+</html>
